@@ -1,27 +1,40 @@
-@extends('layouts.admin')
+@extends('welcome')
 
-@section('title', $editMode ? 'Edit Kamar Kost' : 'Tambah Kamar Kost')
-@section('header', $editMode ? 'Edit Kamar Kost' : 'Tambah Kamar Kost')
+@section('title', isset($editMode) && $editMode ? 'Edit Penghuni' : 'Tambah Penghuni')
+@section('header', isset($editMode) && $editMode ? 'Edit Penghuni' : 'Tambah Penghuni')
 
 @section('content')
-<form action="{{ $editMode ? route('kamar_kosts.update', $kamar->id_kamar) : route('kamar_kosts.store') }}" method="POST">
-    @csrf
-    @if ($editMode) @method('PUT') @endif
+<div class="container">
+    <form action="{{ isset($editMode) && $editMode ? route('penghuni.update', $penghuni->id) : route('penghuni.store') }}" 
+          method="POST" 
+          class="max-w-lg mx-auto p-4">
+        @csrf
+        @if (isset($editMode) && $editMode) @method('PUT') @endif
 
-    <label for="lokasi_kamar">Lokasi Kamar:</label>
-    <input type="text" id="lokasi_kamar" name="lokasi_kamar" 
-           value="{{ old('lokasi_kamar', $kamar->lokasi_kamar ?? '') }}" required>
+        <div class="mb-4">
+            <label for="nama_penghuni" class="block mb-2">Nama Penghuni:</label>
+            <input type="text" 
+                   id="nama_penghuni" 
+                   name="nama_penghuni" 
+                   class="form-control"
+                   value="{{ old('nama_penghuni', $penghuni->nama_penghuni ?? '') }}" 
+                   required>
+        </div>
 
-    <label for="harga_per_bulan">Harga Per Bulan:</label>
-    <input type="number" id="harga_per_bulan" name="harga_per_bulan" 
-           value="{{ old('harga_per_bulan', $kamar->harga_per_bulan ?? '') }}" required>
+        <div class="mb-4">
+            <label for="alamat_penghuni" class="block mb-2">Alamat Penghuni:</label>
+            <textarea id="alamat_penghuni" 
+                      name="alamat_penghuni" 
+                      class="form-control" 
+                      required>{{ old('alamat_penghuni', $penghuni->alamat_penghuni ?? '') }}</textarea>
+        </div>
 
-    <label for="status_kamar">Status Kamar:</label>
-    <select id="status_kamar" name="status_kamar" required>
-        <option value="Available" {{ old('status_kamar', $kamar->status_kamar ?? '') == 'Available' ? 'selected' : '' }}>Available</option>
-        <option value="Occupied" {{ old('status_kamar', $kamar->status_kamar ?? '') == 'Occupied' ? 'selected' : '' }}>Occupied</option>
-    </select>
-
-    <button type="submit">{{ $editMode ? 'Update' : 'Simpan' }}</button>
-</form>
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">
+                {{ isset($editMode) && $editMode ? 'Update' : 'Simpan' }}
+            </button>
+            <a href="{{ route('penghuni.index') }}" class="btn btn-secondary ml-2">Kembali</a>
+        </div>
+    </form>
+</div>
 @endsection

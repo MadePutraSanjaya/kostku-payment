@@ -45,8 +45,12 @@
 
     <div class="content">
         <div class="container">
-            <h1>Selamat Datang di KostKu Payment</h1>
-            <p>Silakan pilih menu dari sidebar untuk memulai.</p>
+            <header class="header">
+                <h1>@yield('header', 'Admin Dashboard')</h1>
+            </header>
+            <div class="main-content">
+                @yield('content')
+            </div>
         </div>
     </div>
 

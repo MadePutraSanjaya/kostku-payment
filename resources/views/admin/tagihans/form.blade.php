@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('welcome')
 
 @section('title', $editMode ? 'Edit Tagihan' : 'Posting Tagihan')
 @section('header', $editMode ? 'Edit Tagihan' : 'Posting Tagihan')
@@ -22,7 +22,7 @@
     <label for="id_kamar">Kamar:</label>
     <select name="id_kamar" id="id_kamar" required>
         <option value="">-- Pilih Kamar --</option>
-        @foreach ($kamarKosts as $kamar)
+        @foreach ($kamar_kosts as $kamar)
         <option value="{{ $kamar->id_kamar }}" 
                 {{ old('id_kamar', $tagihan->id_kamar ?? '') == $kamar->id_kamar ? 'selected' : '' }}>
             {{ $kamar->lokasi_kamar }}

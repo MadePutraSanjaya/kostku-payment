@@ -12,10 +12,7 @@
             <h2>Kost Admin</h2>
             <ul>
                 <li><a href="{{ route('penghuni.index') }}">Penghuni</a></li>
-                <li><a href="{{ route('kamar_kosts.index') }}">Kamar Kost</a></li>
-                <li><a href="{{ route('assignments.index') }}">Assignments</a></li>
-                <li><a href="{{ route('tagihans.index') }}">Tagihan</a></li>
-                <li><a href="{{ route('pembayarans.index') }}">Pembayaran</a></li>
+                <li><a href="{{ route('kamar.index') }}">Kamar Kost</a></li>
             </ul>
         </aside>
         <main class="content">

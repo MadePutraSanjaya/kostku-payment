@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('welcome')
 
 @section('title', 'Assign Penghuni')
 @section('header', 'Assign Penghuni ke Kamar')
@@ -14,7 +14,7 @@
     </select>
     <label>Kamar:</label>
     <select name="id_kamar">
-        @foreach ($kamarKosts as $kamar)
+        @foreach ($kamar_kosts as $kamar)
         <option value="{{ $kamar->id_kamar }}">{{ $kamar->lokasi_kamar }}</option>
         @endforeach
     </select>

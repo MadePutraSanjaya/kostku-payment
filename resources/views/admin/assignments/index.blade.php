@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('welcome')
 
 @section('title', 'Daftar Assignments')
 @section('header', 'Daftar Assignments Penghuni ke Kamar')

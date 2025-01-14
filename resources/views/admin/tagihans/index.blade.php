@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('welcome')
 
 @section('title', 'Daftar Tagihan')
 @section('header', 'Daftar Tagihan')

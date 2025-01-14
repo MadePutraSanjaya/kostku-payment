@@ -7,31 +7,26 @@ use Illuminate\Http\Request;
 
 class PenghuniController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $penghuni = Penghuni::all();
         return view('admin.penghuni.index', compact('penghuni'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('penghuni.form');
+        return view('admin.penghuni.form', [
+            'editMode' => false,
+            'penghuni' => null
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
             'nama_penghuni' => 'required|string|max:255',
-            'alamat_penghuni' => 'required|string',
+            'no_telepon' => 'required|string|max:20',
+            'email' => 'nullable|email|unique:penghunis,email'
         ]);
 
         Penghuni::create($validated);
@@ -39,40 +34,34 @@ class PenghuniController extends Controller
         return redirect()->route('penghuni.index')->with('success', 'Penghuni berhasil ditambahkan!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Penghuni $penghuni)
+    public function edit($id)
     {
-        return view('penghuni.show', compact('penghuni'));
+        $penghuni = Penghuni::findOrFail($id);
+        return view('admin.penghuni.form', [
+            'editMode' => true,
+            'penghuni' => $penghuni
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Penghuni $penghuni)
-    {
-        return view('penghuni.form', compact('penghuni'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Penghuni $penghuni)
     {
         $validated = $request->validate([
             'nama_penghuni' => 'required|string|max:255',
-            'alamat_penghuni' => 'required|string',
+            'no_telepon' => 'required|string|max:20',
+            'email' => 'nullable|email'
         ]);
-
+    
+       
         $penghuni->update($validated);
-
+    
+        // Debug setelah update
+        dd('Setelah Update', $penghuni);
+    
         return redirect()->route('penghuni.index')->with('success', 'Penghuni berhasil diperbarui!');
+    
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Penghuni $penghuni)
     {
         $penghuni->delete();
