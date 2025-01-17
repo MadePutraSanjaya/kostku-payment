@@ -34,10 +34,12 @@
                         <td>{{ $item->email }}</td>
                         <td>
                             <a href="{{ route('penghuni.edit', $item->id_penghuni) }}" class="btn btn-warning">Edit</a>
-                            <form action="{{ route('penghuni.destroy', $item->id_penghuni) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('penghuni.destroy', $item->id_penghuni) }}" method="POST" class="d-inline" id="delete-form-{{ $item->id_penghuni }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                    Hapus
+                                </button>
                             </form>
                         </td>
                     </tr>

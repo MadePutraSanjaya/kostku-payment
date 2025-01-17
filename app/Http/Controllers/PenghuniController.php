@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Penghuni;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PenghuniController extends Controller
 {
@@ -45,27 +46,31 @@ class PenghuniController extends Controller
 
     public function update(Request $request, Penghuni $penghuni)
     {
+        Log::info('Request method: ' . $request->method());
+        Log::info('Request data:', $request->all());
+        Log::info('Penghuni before update:', $penghuni->toArray());
+    
         $validated = $request->validate([
             'nama_penghuni' => 'required|string|max:255',
             'no_telepon' => 'required|string|max:20',
             'email' => 'nullable|email'
         ]);
     
-       
+        Log::info('Validated data:', $validated);
+        
         $penghuni->update($validated);
-    
-        // Debug setelah update
-        dd('Setelah Update', $penghuni);
+        
+        Log::info('Penghuni after update:', $penghuni->fresh()->toArray());
     
         return redirect()->route('penghuni.index')->with('success', 'Penghuni berhasil diperbarui!');
-    
     }
 
-
-    public function destroy(Penghuni $penghuni)
+    public function destroy($id)
     {
-        $penghuni->delete();
+        $post = Penghuni::findOrFail($id);
 
-        return redirect()->route('penghuni.index')->with('success', 'Penghuni berhasil dihapus!');
+        $post->delete();
+
+        return redirect()->route('penghuni.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }

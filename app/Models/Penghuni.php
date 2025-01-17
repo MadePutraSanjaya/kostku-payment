@@ -11,6 +11,7 @@ class Penghuni extends Model
 
     protected $table = 'penghunis';
     protected $primaryKey = 'id_penghuni';
+    
     protected $fillable = [
         'nama_penghuni',
         'no_telepon',

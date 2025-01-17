@@ -5,13 +5,13 @@
 
 @section('content')
     <div class="container">
-        <form
-            action="{{ isset($editMode) && $editMode ? route('penghuni.update', $penghuni->id_penghuni) : route('penghuni.store') }}"
+        <form action="{{ isset($editMode) && $editMode ? route('penghuni.update', $penghuni->id_penghuni) : route('penghuni.store') }}"
             method="POST" class="max-w-lg mx-auto p-4">
             @csrf
             @if (isset($editMode) && $editMode)
                 @method('PUT')
             @endif
+        
 
             <div class="mb-4">
                 <label for="nama_penghuni" class="block mb-2">Nama Penghuni:</label>
