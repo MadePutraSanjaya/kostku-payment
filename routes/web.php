@@ -25,7 +25,7 @@ Route::prefix('penghuni')->name('penghuni.')->group(function () {
     Route::get('/{id_penghuni}/edit', [PenghuniController::class, 'edit'])->name('edit'); // Form edit penghuni
     Route::put('/{id_penghuni}', [PenghuniController::class, 'update'])->name('update'); // Proses update penghuni
     Route::delete('/{id_penghuni}', [PenghuniController::class, 'destroy'])->name('destroy'); // Hapus penghuni
-});
+})->middleware('auth');
 
 // Group routes untuk kamar kost
 Route::prefix('kamar')->name('kamar.')->group(function () {
@@ -35,7 +35,7 @@ Route::prefix('kamar')->name('kamar.')->group(function () {
     Route::get('/{id_kamar}/edit', [KamarKostController::class, 'edit'])->name('edit'); // Form edit kamar
     Route::put('/{id_kamar}', [KamarKostController::class, 'update'])->name('update'); // Proses update kamar
     Route::delete('/{id_kamar}', [KamarKostController::class, 'destroy'])->name('destroy'); // Hapus kamar
-});
+})->middleware('auth');
 
 // Group routes untuk tagihan
 Route::prefix('tagihan')->name('tagihan.')->group(function () {
@@ -45,7 +45,7 @@ Route::prefix('tagihan')->name('tagihan.')->group(function () {
     Route::get('/{id_tagihan}/edit', [TagihanController::class, 'edit'])->name('edit'); // Form edit tagihan
     Route::put('/{id_tagihan}', [TagihanController::class, 'update'])->name('update'); // Proses update tagihan
     Route::delete('/{id_tagihan}', [TagihanController::class, 'destroy'])->name('destroy'); // Hapus tagihan
-});
+})->middleware('auth');
 
 // Group routes untuk pembayaran
 Route::prefix('pembayaran')->name('pembayaran.')->group(function () {
@@ -55,4 +55,4 @@ Route::prefix('pembayaran')->name('pembayaran.')->group(function () {
     Route::get('/{id_pembayaran}/edit', [PembayaranController::class, 'edit'])->name('edit'); // Form edit pembayaran
     Route::put('/{id_pembayaran}', [PembayaranController::class, 'update'])->name('update'); // Proses update pembayaran
     Route::delete('/{id_pembayaran}', [PembayaranController::class, 'destroy'])->name('destroy'); // Hapus pembayaran
-});
+})->middleware('auth');
