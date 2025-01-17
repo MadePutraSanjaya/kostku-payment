@@ -11,7 +11,7 @@ class KamarKost extends Model
 
     protected $table = 'kamar_kosts';
     protected $primaryKey = 'id_kamar';
-    protected $fillable = ['lokasi_kamar', 'harga_per_bulan', 'status_kamar'];
+    protected $fillable = ['lokasi_kamar', 'fasilitas', 'status_kamar'];
 
     public function assignments()
     {

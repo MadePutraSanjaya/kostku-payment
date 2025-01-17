@@ -29,7 +29,6 @@ Route::prefix('penghuni')->name('penghuni.')->group(function () {
 
 // Group routes untuk kamar kost
 Route::prefix('kamar')->name('kamar.')->group(function () {
-    Route::resource('kamar_kosts', KamarKostController::class);
     Route::get('/', [KamarKostController::class, 'index'])->name('index'); // List kamar
     Route::get('/create', [KamarKostController::class, 'create'])->name('create'); // Form tambah kamar
     Route::post('/', [KamarKostController::class, 'store'])->name('store'); // Proses tambah kamar
