@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Createkamar_kostsTable extends Migration
+class CreateKamarKostsTable extends Migration  // Changed to PascalCase
 {
     public function up()
     {
