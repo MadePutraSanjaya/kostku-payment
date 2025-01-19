@@ -68,7 +68,7 @@
     <div class="content">
         <div class="container">
             <header class="header">
-                <h1>@yield('header', 'Admin Dashboard')</h1>
+                <h1>@yield('header')</h1>
             </header>
             <div class="main-content">
                 @yield('content')
