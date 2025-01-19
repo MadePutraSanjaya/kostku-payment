@@ -50,14 +50,12 @@ Route::prefix('tagihan')->name('tagihan.')->group(function () {
     Route::delete('/{id_tagihan}', [TagihanController::class, 'destroy'])->name('destroy');
 })->middleware('auth');
 
-Route::prefix('pembayaran')->name('pembayaran.')->group(function () {
-    Route::get('/', [PembayaranController::class, 'index'])->name('index');
-    Route::get('/create', [PembayaranController::class, 'create'])->name('create');
-    Route::post('/', [PembayaranController::class, 'store'])->name('store');
-    Route::get('/{id_pembayaran}/edit', [PembayaranController::class, 'edit'])->name('edit');
-    Route::put('/{id_pembayaran}', [PembayaranController::class, 'update'])->name('update');
-    Route::delete('/{id_pembayaran}', [PembayaranController::class, 'destroy'])->name('destroy');
+Route::prefix('pembayaran')->name('pembayaran.')->middleware('auth')->group(function () {
+    Route::get('/', [PembayaranController::class, 'index'])->name('index'); // Daftar pembayaran
+    Route::get('/{id}/edit', [PembayaranController::class, 'edit'])->name('edit'); // Edit status pembayaran
+    Route::put('/{id}', [PembayaranController::class, 'update'])->name('update'); // Update status pembayaran
 })->middleware('auth');
+
 
 // Penghuni routes
 Route::prefix('riwayat')->name('riwayat.')->group(function () {

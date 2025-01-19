@@ -50,7 +50,7 @@
                     <a href="{{ route('pembayaran.index') }}">Pembayaran</a>
                 @else
                 <a href="{{ route('riwayat.index') }}">Riwayat</a>
-                <a href="{{ route('tagihan.index') }}">Tagihan</a>
+                <a href="{{ route('pembayaran.index') }}">Pembayaran</a>
                 @endif
             @else
                 <p class="text-danger">User is not authenticated</p>

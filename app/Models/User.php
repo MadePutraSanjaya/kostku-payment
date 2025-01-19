@@ -52,13 +52,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function getRoleAttribute($value): Role
+    public function tagihans()
     {
-        return Role::from($value);
-    }
-
-    public function setRoleAttribute(Role $role)
-    {
-        $this->attributes['role'] = $role->value;
+        return $this->hasMany(Tagihan::class, 'id_penghuni');
     }
 }
